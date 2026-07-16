@@ -282,7 +282,7 @@
 
         /* ── Reviewer, Service, Awards ── */
         .reviewer-category {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
         .reviewer-category-label {
             font-weight: 600;
@@ -293,27 +293,11 @@
             margin-bottom: 0.4rem;
             display: block;
         }
-        .reviewer-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.3rem 0.8rem;
-            list-style: none;
-            margin-left: 0.5rem;
-        }
-        .reviewer-list li {
+        .reviewer-text {
             font-size: 0.93rem;
-            padding-left: 0;
-            position: relative;
-        }
-        .reviewer-list li::before {
-            content: '·';
-            position: absolute;
-            left: -0.6rem;
-            color: var(--color-muted);
-            font-weight: 600;
-        }
-        .reviewer-list li:first-child::before {
-            content: '';
+            color: var(--color-body);
+            line-height: 1.6;
+            margin-left: 0.5rem;
         }
         .service-item, .award-item {
             font-size: 0.93rem;
@@ -359,7 +343,6 @@
             .skills-grid { grid-template-columns: 1fr; }
             .exp-header { flex-direction: column; }
             .nav-inner a { padding: 0.6rem 0.7rem; font-size: 0.75rem; }
-            .reviewer-list { gap: 0.3rem 0.5rem; }
         }
 
         /* ── Print ── */
@@ -576,33 +559,17 @@
     
     <div class="reviewer-category">
         <span class="reviewer-category-label">Neuroscience &amp; Psychology</span>
-        <ul class="reviewer-list">
-            <li><em>Frontiers in Psychology</em></li>
-            <li><em>Frontiers in Human Neuroscience</em></li>
-            <li><em>Frontiers in Behavioral Neuroscience</em></li>
-            <li><em>Acta Psychologica</em></li>
-            <li><em>Journal of Pain Research</em></li>
-        </ul>
+        <div class="reviewer-text"><em>Frontiers in Psychology</em> | <em>Frontiers in Human Neuroscience</em> | <em>Frontiers in Behavioral Neuroscience</em> | <em>Frontiers in Systems Neuroscience</em> | <em>Acta Psychologica</em> | <em>Journal of Pain Research</em></div>
     </div>
 
     <div class="reviewer-category">
         <span class="reviewer-category-label">Clinical &amp; Psychiatry</span>
-        <ul class="reviewer-list">
-            <li><em>BMC Psychiatry</em></li>
-            <li><em>Frontiers in Psychiatry</em></li>
-            <li><em>Clinical Interventions in Aging</em></li>
-            <li><em>Neuropsychiatric Disease and Treatment</em></li>
-        </ul>
+        <div class="reviewer-text"><em>BMC Psychiatry</em> | <em>Frontiers in Psychiatry</em> | <em>Clinical Interventions in Aging</em> | <em>Neuropsychiatric Disease and Treatment</em></div>
     </div>
 
     <div class="reviewer-category">
         <span class="reviewer-category-label">Multidisciplinary &amp; General Science</span>
-        <ul class="reviewer-list">
-            <li><em>Scientific Reports</em></li>
-            <li><em>Nature and Science of Sleep</em></li>
-            <li><em>Humanities &amp; Social Sciences Communications</em></li>
-            <li><em>PLOS Climate</em></li>
-        </ul>
+        <div class="reviewer-text"><em>Scientific Reports</em> | <em>Nature and Science of Sleep</em> | <em>Humanities &amp; Social Sciences Communications</em> | <em>PLOS Climate</em></div>
     </div>
 </section>
 
