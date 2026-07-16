@@ -281,24 +281,39 @@
         }
 
         /* ── Reviewer, Service, Awards ── */
+        .reviewer-category {
+            margin-bottom: 1.2rem;
+        }
+        .reviewer-category-label {
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
         .reviewer-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.3rem 0;
+            gap: 0.3rem 0.8rem;
             list-style: none;
+            margin-left: 0.5rem;
         }
         .reviewer-list li {
             font-size: 0.93rem;
-            flex: 0 0 100%;
-            padding-left: 1rem;
+            padding-left: 0;
             position: relative;
         }
         .reviewer-list li::before {
-            content: '–';
+            content: '·';
             position: absolute;
-            left: 0;
-            color: var(--color-accent);
+            left: -0.6rem;
+            color: var(--color-muted);
             font-weight: 600;
+        }
+        .reviewer-list li:first-child::before {
+            content: '';
         }
         .service-item, .award-item {
             font-size: 0.93rem;
@@ -344,6 +359,7 @@
             .skills-grid { grid-template-columns: 1fr; }
             .exp-header { flex-direction: column; }
             .nav-inner a { padding: 0.6rem 0.7rem; font-size: 0.75rem; }
+            .reviewer-list { gap: 0.3rem 0.5rem; }
         }
 
         /* ── Print ── */
@@ -390,7 +406,7 @@
 <section class="cv-section" id="research">
     <h2 class="section-title">Research Interests</h2>
     <p class="research-statement">
-        My research program advances integrative approaches to understanding and treating neuropsychiatric disorders, with a primary focus on Alzheimer's disease and cognitive decline. I combine multimodal neuroimaging (MRI, EEG), non-invasive brain stimulation (TMS/TBS), and computational modeling—including machine learning and connectome-based predictive approaches—to develop precision-targeted interventions and early diagnostic biomarkers. A central goal of my work is to bridge translational neuroscience and clinical application by identifying network-level mechanisms of cognitive dysfunction and leveraging them for individualized therapeutic strategies.
+        My research program advances integrative approaches to understanding and treating neuropsychiatric disorders, with a primary focus on Alzheimer's disease and cognitive decline. I combine multi[...]
     </p>
 </section>
 
@@ -428,25 +444,25 @@
 
     <div class="pub-group-title">Peer-Reviewed Journal Articles</div>
     <ol class="pub-list">
-        <li><span class="author-me">Zhang, H.</span>, Green, J., Dwivedi, S., &amp; Chou, Y. H. (2025). <span class="pub-title">Domain-specific efficacy of accelerated repetitive transcranial magnetic stimulation in neuropsychiatric disorders: A systematic review and meta-analysis.</span> <span class="pub-journal">Biological Psychiatry.</span></li>
-        <li><span class="author-me">Zhang, H.</span>, Yu, Q., Zhang, X., Zhang, Y., Huang, T., Ding, J., Yan, L., Cao, X., Yin, L., Liu, Y., Yuan, T.-F., Luo, W., &amp; Zhao, D. (2025). <span class="pub-title">An electroencephalography connectome predictive model of craving for methamphetamine.</span> <span class="pub-journal">International Journal of Clinical and Health Psychology, 25</span>(1), 100551.</li>
-        <li>Frank, L. R., Galinsky, V. L., <span class="author-me">Zhang, H.</span>, Hall, J. D., Bondi, M. W., &amp; Chou, Y. (2026). <span class="pub-title">Spatially resolved EEG suggests therapeutic effects of TMS in AD/MCI.</span> <span class="pub-journal">Frontiers in Human Neuroscience.</span></li>
-        <li>Hall, J. D., Green, J. M., Chen, Y. C. A., Liu, Y., <span class="author-me">Zhang, H.</span>, Sundman, M. H., &amp; Chou, Y. (2024). <span class="pub-title">Exploring the potential of combining transcranial magnetic stimulation and electroencephalography to investigate mild cognitive impairment and Alzheimer's disease: A systematic review.</span> <span class="pub-journal">GeroScience</span>, 1–35.</li>
-        <li>Zhang, T., Li, T., Huang, S., <span class="author-me">Zhang, H.</span>, Xu, X., Zheng, H., Zhong, Q., &amp; Gao, Y. (2024). <span class="pub-title">Neural correlates of impaired learning and recognition of novel faces in mild cognitive impairment.</span> <span class="pub-journal">Clinical Neurophysiology, 160</span>, 28–37.</li>
-        <li>Zhao, D., Zeng, N., <span class="author-me">Zhang, H.</span>, Zhang, Y., Shan, J., Luo, H., Zangen, A., &amp; Yuan, T. F. (2023). <span class="pub-title">Deep magnetic stimulation targeting the medial prefrontal and anterior cingulate cortices for methamphetamine use disorder: A randomized, double-blind, sham-controlled study.</span> <span class="pub-journal">General Psychiatry, 36</span>(5).</li>
-        <li>Xu, L., <span class="author-me">Zhang, H.</span>, Zhou, C., Zhang, Z., Li, G., Lu, W., Tian, X., Huang, H., Li, D., Schinke, R. J., Yuan, T., Yin, J., &amp; Lin, K. (2023). <span class="pub-title">Deficits in psychological resilience and problem-solving ability in adolescents with suicidal ideation.</span> <span class="pub-journal">Child and Adolescent Psychiatry and Mental Health, 17</span>(1), 31.</li>
-        <li>Huang, J., Wang, C., <span class="author-me">Zhang, H.</span>, Zheng, H., Huang, T., &amp; Di, J. Z. (2023). <span class="pub-title">Neuroimaging and neuroendocrine insights into food cravings and appetite interventions in obesity.</span> <span class="pub-journal">Psychoradiology, 3</span>, kkad023.</li>
-        <li>Zeng, N., Zheng, H., Shi, T., <span class="author-me">Zhang, H.</span>, Wang, L. X., Liang, Z. Y., Sun, B., Liao, Y., et al. (2022). <span class="pub-title">Impaired delay discounting and time sensitivity in methcathinone use disorder.</span> <span class="pub-journal">European Archives of Psychiatry and Clinical Neuroscience, 272</span>(8), 1595–1602.</li>
-        <li><span class="author-me">Zhang, H.</span>, Ou, H., Meng, D. H., Lu, Q., Zhang, L., Lu, X., Yin, Z. F., He, C., &amp; Shen, Y. (2021). <span class="pub-title">Impaired cognitive empathy in outpatients with chronic musculoskeletal pain: A cross-sectional study.</span> <span class="pub-journal">Neural Plasticity, 2021</span>(1), 4430594.</li>
-        <li><span class="author-me">Zhang, H.</span>, Zhao, D., Liu, Y. P., Wang, L. X., Yang, B., &amp; Yuan, T. F. (2021). <span class="pub-title">Problem-solving deficits in methcathinone use disorder.</span> <span class="pub-journal">Psychopharmacology, 238</span>, 2515–2524.</li>
-        <li>Shen, Y., Cao, X., Zeng, N. N., Wang, Y., <span class="author-me">Zhang, H.</span>, Zangen, A., &amp; Yuan, T. F. (2021). <span class="pub-title">Emergence of sexual dreams and emission following deep transcranial magnetic stimulation over the medial prefrontal and cingulate cortices.</span> <span class="pub-journal">CNS &amp; Neurological Disorders–Drug Targets, 20</span>(3).</li>
-        <li><span class="author-me">Zhang, H.</span>, Zheng, H., Zhang, Y., &amp; Zhao, D. (2020). <span class="pub-title">Commentary: Compulsive drug use is associated with imbalance of orbitofrontal- and prelimbic-striatal circuits in punishment-resistant individuals.</span> <span class="pub-journal">Frontiers in Neural Circuits, 14</span>, 49.</li>
+        <li><span class="author-me">Zhang, H.</span>, Green, J., Dwivedi, S., &amp; Chou, Y. H. (2025). <span class="pub-title">Domain-specific efficacy of accelerated repetitive transcranial magnetic[...]
+        <li><span class="author-me">Zhang, H.</span>, Yu, Q., Zhang, X., Zhang, Y., Huang, T., Ding, J., Yan, L., Cao, X., Yin, L., Liu, Y., Yuan, T.-F., Luo, W., &amp; Zhao, D. (2025). <span class="p[...]
+        <li>Frank, L. R., Galinsky, V. L., <span class="author-me">Zhang, H.</span>, Hall, J. D., Bondi, M. W., &amp; Chou, Y. (2026). <span class="pub-title">Spatially resolved EEG suggests therapeut[...]
+        <li>Hall, J. D., Green, J. M., Chen, Y. C. A., Liu, Y., <span class="author-me">Zhang, H.</span>, Sundman, M. H., &amp; Chou, Y. (2024). <span class="pub-title">Exploring the potential of comb[...]
+        <li>Zhang, T., Li, T., Huang, S., <span class="author-me">Zhang, H.</span>, Xu, X., Zheng, H., Zhong, Q., &amp; Gao, Y. (2024). <span class="pub-title">Neural correlates of impaired learning a[...]
+        <li>Zhao, D., Zeng, N., <span class="author-me">Zhang, H.</span>, Zhang, Y., Shan, J., Luo, H., Zangen, A., &amp; Yuan, T. F. (2023). <span class="pub-title">Deep magnetic stimulation targetin[...]
+        <li>Xu, L., <span class="author-me">Zhang, H.</span>, Zhou, C., Zhang, Z., Li, G., Lu, W., Tian, X., Huang, H., Li, D., Schinke, R. J., Yuan, T., Yin, J., &amp; Lin, K. (2023). <span class="pu[...]
+        <li>Huang, J., Wang, C., <span class="author-me">Zhang, H.</span>, Zheng, H., Huang, T., &amp; Di, J. Z. (2023). <span class="pub-title">Neuroimaging and neuroendocrine insights into food crav[...]
+        <li>Zeng, N., Zheng, H., Shi, T., <span class="author-me">Zhang, H.</span>, Wang, L. X., Liang, Z. Y., Sun, B., Liao, Y., et al. (2022). <span class="pub-title">Impaired delay discounting and [...]
+        <li><span class="author-me">Zhang, H.</span>, Ou, H., Meng, D. H., Lu, Q., Zhang, L., Lu, X., Yin, Z. F., He, C., &amp; Shen, Y. (2021). <span class="pub-title">Impaired cognitive empathy in o[...]
+        <li><span class="author-me">Zhang, H.</span>, Zhao, D., Liu, Y. P., Wang, L. X., Yang, B., &amp; Yuan, T. F. (2021). <span class="pub-title">Problem-solving deficits in methcathinone use disor[...]
+        <li>Shen, Y., Cao, X., Zeng, N. N., Wang, Y., <span class="author-me">Zhang, H.</span>, Zangen, A., &amp; Yuan, T. F. (2021). <span class="pub-title">Emergence of sexual dreams and emission fo[...]
+        <li><span class="author-me">Zhang, H.</span>, Zheng, H., Zhang, Y., &amp; Zhao, D. (2020). <span class="pub-title">Commentary: Compulsive drug use is associated with imbalance of orbitofrontal[...]
     </ol>
 
     <div class="pub-group-title">Manuscripts Under Review &amp; In Preparation</div>
     <ol class="pub-list" start="13">
-        <li><span class="author-me">Zhang, H.</span>, Hickey, R., Chen, Y., Liu, Y., Ugonna, C., Chen, N., &amp; Chou, Y. (in prep). <span class="pub-title">Tractography-guided theta-burst stimulation modulates hippocampal perfusion in mild cognitive impairment.</span></li>
-        <li><span class="author-me">Zhang, H.</span>, Liu, Y., &amp; Chou, Y. (in prep). <span class="pub-title">Network-targeted theta burst stimulation drives microstructural remodeling in the hippocampal circuit of mild cognitive impairment.</span></li>
+        <li><span class="author-me">Zhang, H.</span>, Hickey, R., Chen, Y., Liu, Y., Ugonna, C., Chen, N., &amp; Chou, Y. (in prep). <span class="pub-title">Tractography-guided theta-burst stimulation[...]
+        <li><span class="author-me">Zhang, H.</span>, Liu, Y., &amp; Chou, Y. (in prep). <span class="pub-title">Network-targeted theta burst stimulation drives microstructural remodeling in the hippo[...]
     </ol>
 </section>
 
@@ -477,7 +493,7 @@
         <ul class="exp-bullets">
             <li>Managed day-to-day laboratory operations including participant recruitment, clinical screening (MMSE, DSM-V), and psychophysiological data acquisition (EEG, behavioral).</li>
             <li>Directed repetitive deep TMS intervention protocols in a randomized controlled trial targeting methamphetamine craving and neural reactivity to addiction-related cues.</li>
-            <li>Developed and implemented machine-learning connectome predictive models on EEG source-estimated functional connectivity, characterizing time–frequency–phase correlates of addictive behaviors.</li>
+            <li>Developed and implemented machine-learning connectome predictive models on EEG source-estimated functional connectivity, characterizing time–frequency–phase correlates of addictive[...]
             <li>Supervised junior research assistants and coordinated cross-institutional collaborations on substance use disorder studies.</li>
         </ul>
     </div>
@@ -543,7 +559,7 @@
             <li><strong>PSY 150:</strong> The Structure of Mind and Behavior — Fall 2024</li>
             <li><strong>PSY 300:</strong> Mind and Brain — Fall 2023, Spring 2024, Spring 2025, Spring 2026</li>
         </ul>
-        <p class="edu-detail" style="margin-top:0.3rem;">Delivered guest lectures, facilitated in-class discussions, and mentored students on research design, data analysis, and capstone projects in cognitive neuroscience and psychology.</p>
+        <p class="edu-detail" style="margin-top:0.3rem;">Delivered guest lectures, facilitated in-class discussions, and mentored students on research design, data analysis, and capstone projects in c[...]
     </div>
 
     <div class="teach-entry">
@@ -556,12 +572,38 @@
 <!-- ════════════ PEER REVIEW ════════════ -->
 <section class="cv-section" id="review">
     <h2 class="section-title">Peer Review Service</h2>
-    <p style="font-size:0.93rem; margin-bottom:0.8rem; color:var(--color-body);">Ad-hoc reviewer for the following peer-reviewed journals:</p>
-    <ul class="reviewer-list">
-        <li><em>Frontiers in Psychology</em> · <em>Acta Psychologica</em> · <em>Frontiers in Human Neuroscience</em> · <em>Frontiers in Behavioral Neuroscience</em></li>
-        <li><em>BMC Psychiatry</em> · <em>Frontiers in Psychiatry</em> · <em>Clinical Interventions in Aging</em> · <em>Neuropsychiatric Disease and Treatment</em></li>
-        <li><em>Humanities &amp; Social Sciences Communications</em> · <em>Journal of Pain Research</em> · <em>Nature and Science of Sleep</em> · <em>PLOS Climate</em> · <em>Scientific Reports</em></li>
-    </ul>
+    <p style="font-size:0.93rem; margin-bottom:1rem; color:var(--color-body);">Ad-hoc reviewer for the following peer-reviewed journals:</p>
+    
+    <div class="reviewer-category">
+        <span class="reviewer-category-label">Neuroscience &amp; Psychology</span>
+        <ul class="reviewer-list">
+            <li><em>Frontiers in Psychology</em></li>
+            <li><em>Frontiers in Human Neuroscience</em></li>
+            <li><em>Frontiers in Behavioral Neuroscience</em></li>
+            <li><em>Acta Psychologica</em></li>
+            <li><em>Journal of Pain Research</em></li>
+        </ul>
+    </div>
+
+    <div class="reviewer-category">
+        <span class="reviewer-category-label">Clinical &amp; Psychiatry</span>
+        <ul class="reviewer-list">
+            <li><em>BMC Psychiatry</em></li>
+            <li><em>Frontiers in Psychiatry</em></li>
+            <li><em>Clinical Interventions in Aging</em></li>
+            <li><em>Neuropsychiatric Disease and Treatment</em></li>
+        </ul>
+    </div>
+
+    <div class="reviewer-category">
+        <span class="reviewer-category-label">Multidisciplinary &amp; General Science</span>
+        <ul class="reviewer-list">
+            <li><em>Scientific Reports</em></li>
+            <li><em>Nature and Science of Sleep</em></li>
+            <li><em>Humanities &amp; Social Sciences Communications</em></li>
+            <li><em>PLOS Climate</em></li>
+        </ul>
+    </div>
 </section>
 
 <!-- ════════════ SERVICE ════════════ -->
