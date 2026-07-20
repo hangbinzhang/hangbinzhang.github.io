@@ -15,91 +15,127 @@
   --accent:#39506b; --accent-soft:#e7ecf1;
   --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
-  --wrap:760px;
+  --wrap:720px;
+  --date-col:8.5rem;      /* shared right-hand axis for all meta */
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--serif);color:var(--body);background:var(--paper);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--serif);color:var(--body);background:var(--paper);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 ::selection{background:var(--accent-soft)}
-.page{max-width:var(--wrap);margin:0 auto;padding:0 1.6rem}
+.page{max-width:var(--wrap);margin:0 auto;padding:0 1.75rem}
+
+/* Masthead */
 .masthead{padding:4.5rem 0 2rem;text-align:center;border-bottom:1px solid var(--rule)}
-.masthead h1{font-weight:600;font-size:clamp(2.3rem,5vw,2.9rem);letter-spacing:-.015em;color:var(--ink);line-height:1.05}
-.masthead .title{font-size:1.08rem;font-style:italic;color:var(--muted);margin-top:.55rem;font-weight:400}
+.masthead h1{font-weight:600;font-size:clamp(2.2rem,5vw,2.8rem);letter-spacing:-.015em;color:var(--ink);line-height:1.05}
+.masthead .title{font-size:1.05rem;font-style:italic;color:var(--muted);margin-top:.5rem;font-weight:400}
 .masthead .contact{font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--muted);margin-top:1.4rem;display:flex;justify-content:center;flex-wrap:wrap;gap:.35rem 1.1rem}
 .masthead .contact a{color:var(--accent);text-decoration:none}
 .masthead .contact a:hover{text-decoration:underline}
-.nav{position:sticky;top:0;z-index:20;background:rgba(251,250,247,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
-.nav ul{max-width:var(--wrap);margin:0 auto;padding:.6rem 1.6rem;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:.1rem 1.3rem}
-.nav a{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.2rem 0;border-bottom:1.5px solid transparent;transition:color .18s,border-color .18s}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(251,250,247,.93);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
+.nav ul{max-width:var(--wrap);margin:0 auto;padding:.65rem 1.75rem;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:.2rem 1.3rem}
+.nav a{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.2rem 0;border-bottom:1.5px solid transparent;transition:color .18s,border-color .18s}
 .nav a:hover,.nav a.active{color:var(--ink);border-bottom-color:var(--accent)}
-section{padding:2.8rem 0 .4rem;position:relative}
+
+/* Sections — section head uses a fixed 2rem numeral gutter, baseline aligned */
+section{padding:3rem 0 .5rem}
 section+section{border-top:1px solid var(--rule-soft)}
-.sec-head{display:flex;align-items:baseline;gap:.9rem;margin-bottom:1.5rem}
-.sec-num{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.05em;padding-top:.25rem;min-width:1.8rem}
-.sec-title{font-weight:600;font-size:1.28rem;color:var(--ink);letter-spacing:-.005em}
-.statement{font-size:1.06rem;line-height:1.7;color:var(--body);max-width:62ch}
-.statement em{font-style:italic}
+.sec-head{display:grid;grid-template-columns:2rem 1fr;align-items:baseline;column-gap:1rem;margin-bottom:1.6rem}
+.sec-num{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.05em;text-align:left}
+.sec-title{font-weight:600;font-size:1.3rem;color:var(--ink);letter-spacing:-.005em}
+/* everything in a section aligns to the same left edge as the title (3rem indent) */
+.sec-body{padding-left:3rem}
+
+/* Research statement */
+.statement{font-size:1.05rem;line-height:1.68;color:var(--body)}
 .statement .key{font-weight:600;color:var(--ink)}
-.interests{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.02em;margin-top:1.3rem;padding-top:1rem;border-top:1px dotted var(--rule);line-height:1.9}
+.interests{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.02em;margin-top:1.4rem;padding-top:1rem;border-top:1px dotted var(--rule);line-height:1.85}
 .interests b{color:var(--accent);font-weight:500}
-.edu{margin-bottom:1.4rem}
+
+/* Generic meta-row: [ content 1fr ][ fixed date col ] — shared right axis */
+.row{display:grid;grid-template-columns:1fr var(--date-col);column-gap:1.2rem;align-items:baseline}
+.row .meta{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-align:right;white-space:nowrap}
+
+/* Education */
+.edu{margin-bottom:1.5rem}
 .edu:last-child{margin-bottom:0}
-.edu-line{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
-.edu-deg{font-weight:600;color:var(--ink);font-size:1.03rem}
-.edu-yr{font-family:var(--mono);font-size:.74rem;color:var(--muted);white-space:nowrap}
-.edu-school{color:var(--body);font-size:.98rem;margin-top:.02rem}
-.edu-meta{font-size:.92rem;color:var(--muted);margin-top:.15rem;line-height:1.5}
+.edu-deg{font-weight:600;color:var(--ink);font-size:1.02rem;line-height:1.35}
+.edu-school{color:var(--body);font-size:.97rem;margin-top:.05rem}
+.edu-meta{font-size:.9rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
 .edu-meta em{font-style:italic;color:var(--body)}
-.pub-group{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);margin:1.7rem 0 1rem}
+
+/* Publications */
+.pub-group{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);margin:1.9rem 0 1.1rem}
 .pub-group:first-of-type{margin-top:0}
-.ref{position:relative;padding:0 0 .95rem 2.5rem;font-size:.95rem;line-height:1.5;color:var(--body)}
-.ref .rn{position:absolute;left:0;top:0;font-family:var(--mono);font-size:.76rem;color:var(--faint)}
+.ref{display:grid;grid-template-columns:2rem 1fr;column-gap:.75rem;padding:0 0 1rem;font-size:.94rem;line-height:1.5;color:var(--body)}
+.ref .rn{font-family:var(--mono);font-size:.74rem;color:var(--faint);text-align:right;padding-top:.06rem}
 .ref .me{font-weight:600;color:var(--ink)}
 .ref .venue{font-style:italic;color:var(--ink)}
-.ref .tick{display:inline-block;width:.42rem;height:.42rem;border-radius:50%;background:var(--accent);vertical-align:.05em;margin-left:.35rem}
-.ref .fa{font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;color:var(--accent);text-transform:uppercase;margin-left:.3rem}
-.pub-legend{font-family:var(--mono);font-size:.64rem;color:var(--faint);letter-spacing:.03em;margin-top:.6rem;display:flex;align-items:center;gap:.4rem}
-.pub-legend .tick{position:static}
-.job{margin-bottom:1.7rem}
+.ref .fa{display:inline-block;font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;color:var(--accent);text-transform:uppercase;border:1px solid var(--accent-soft);background:var(--accent-soft);border-radius:2px;padding:.05rem .3rem;margin-left:.4rem;vertical-align:.08em;white-space:nowrap}
+.pub-legend{font-family:var(--mono);font-size:.64rem;color:var(--faint);letter-spacing:.03em;margin-top:.4rem;padding-left:2.75rem}
+
+/* Experience */
+.job{margin-bottom:1.9rem}
 .job:last-child{margin-bottom:.3rem}
-.job-line{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
-.job-role{font-weight:600;color:var(--ink);font-size:1.02rem;line-height:1.3}
-.job-dates{font-family:var(--mono);font-size:.72rem;color:var(--muted);white-space:nowrap}
-.job-org{font-style:italic;font-size:.94rem;color:var(--muted);margin:.12rem 0 .5rem}
+.job-role{font-weight:600;color:var(--ink);font-size:1rem;line-height:1.35}
+.job-org{font-style:italic;font-size:.92rem;color:var(--muted);margin:.15rem 0 .55rem}
 .job ul{list-style:none}
-.job li{position:relative;padding-left:1.15rem;margin-bottom:.3rem;font-size:.93rem;color:var(--body);line-height:1.5}
-.job li::before{content:'';position:absolute;left:0;top:.66rem;width:6px;height:1px;background:var(--accent)}
-.tblock{margin-bottom:1.5rem}
-.trole{font-weight:600;color:var(--ink);font-size:1.02rem}
-.torg{font-style:italic;font-size:.9rem;color:var(--muted);margin-bottom:.5rem}
+.job li{position:relative;padding-left:1.15rem;margin-bottom:.32rem;font-size:.92rem;color:var(--body);line-height:1.5}
+.job li::before{content:'';position:absolute;left:0;top:.62rem;width:6px;height:1px;background:var(--accent)}
+
+/* Teaching */
+.tblock{margin-bottom:1.7rem}
+.trole{font-weight:600;color:var(--ink);font-size:1rem}
+.torg{font-style:italic;font-size:.9rem;color:var(--muted);margin-bottom:.6rem}
 .torg .mono{font-family:var(--mono);font-style:normal;font-size:.72rem}
-.course{display:flex;align-items:baseline;gap:.7rem;padding:.26rem 0;font-size:.95rem;border-bottom:1px solid var(--rule-soft)}
+.course{display:grid;grid-template-columns:5rem 1fr var(--date-col);column-gap:1rem;align-items:baseline;padding:.3rem 0;font-size:.94rem;border-bottom:1px solid var(--rule-soft)}
 .course:last-of-type{border-bottom:none}
-.ccode{font-family:var(--mono);font-size:.74rem;color:var(--accent);white-space:nowrap;min-width:5rem}
+.ccode{font-family:var(--mono);font-size:.74rem;color:var(--accent);white-space:nowrap}
 .cname{color:var(--ink)}
-.cterm{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-left:auto;white-space:nowrap}
-.tcap{font-size:.9rem;color:var(--muted);margin-top:.5rem;line-height:1.55}
-.eval{margin-top:.9rem;padding-left:1rem;border-left:2px solid var(--accent)}
-.eval-stat{font-size:.92rem;color:var(--body)}
+.cterm{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-align:right;white-space:nowrap}
+.tcap{font-size:.9rem;color:var(--muted);margin-top:.55rem;line-height:1.55}
+.eval{margin-top:1rem;padding:.9rem 0 .9rem 1.1rem;border-left:2px solid var(--accent)}
+.eval-stat{font-size:.92rem;color:var(--body);line-height:1.55}
 .eval-stat b{font-weight:600;color:var(--ink)}
-.eval-q{font-style:italic;font-size:.96rem;color:var(--ink);margin-top:.5rem;line-height:1.5}
-.eval-q cite{display:block;font-style:normal;font-family:var(--mono);font-size:.64rem;color:var(--muted);margin-top:.3rem;letter-spacing:.02em}
-.sub{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:1.4rem 0 .65rem}
+.eval-rate{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
+.eval-q{font-style:italic;font-size:.95rem;color:var(--ink);margin-top:.55rem;line-height:1.5}
+.eval-q cite{display:block;font-style:normal;font-family:var(--mono);font-size:.64rem;color:var(--muted);margin-top:.35rem;letter-spacing:.02em}
+
+/* Service */
+.sub{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:1.5rem 0 .7rem}
 .sub:first-child{margin-top:0}
-.rev{font-size:.92rem;color:var(--body);line-height:1.75;margin-bottom:.45rem}
+.rev{font-size:.92rem;color:var(--body);line-height:1.75;margin-bottom:.5rem;max-width:60ch}
 .rev em{font-style:italic}
-.srv{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;font-size:.94rem;color:var(--body);padding:.24rem 0}
-.srv .sy{font-family:var(--mono);font-size:.72rem;color:var(--muted);white-space:nowrap}
-.award{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;padding:.32rem 0;font-size:.95rem;color:var(--body);border-bottom:1px solid var(--rule-soft)}
+.srv{display:grid;grid-template-columns:1fr var(--date-col);column-gap:1.2rem;align-items:baseline;font-size:.93rem;color:var(--body);padding:.26rem 0}
+.srv .sy{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-align:right;white-space:nowrap}
+
+/* Awards */
+.award{display:grid;grid-template-columns:1fr var(--date-col);column-gap:1.2rem;align-items:baseline;padding:.34rem 0;font-size:.94rem;color:var(--body);border-bottom:1px solid var(--rule-soft)}
 .award:last-child{border-bottom:none}
-.award .amt{font-family:var(--mono);font-size:.76rem;color:var(--accent)}
-.award .ay{font-family:var(--mono);font-size:.72rem;color:var(--muted);white-space:nowrap}
-.skills{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2.4rem}
-.scat{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:.22rem}
-.sval{font-size:.94rem;color:var(--body)}
-.foot{margin-top:3rem;padding:1.6rem 0 3rem;border-top:1px solid var(--rule);text-align:center;font-family:var(--mono);font-size:.66rem;color:var(--faint);letter-spacing:.04em}
+.award .amt{font-family:var(--mono);font-size:.74rem;color:var(--accent);white-space:nowrap}
+.award .ay{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-align:right;white-space:nowrap}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem 2.4rem}
+.scat{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
+.sval{font-size:.93rem;color:var(--body);line-height:1.5}
+
+/* Footer */
+.foot{margin-top:3rem;padding:1.8rem 0 3rem;border-top:1px solid var(--rule);text-align:center;font-family:var(--mono);font-size:.66rem;color:var(--faint);letter-spacing:.04em}
 .foot a{color:var(--accent);text-decoration:none}
-@media(max-width:560px){body{font-size:16px}.masthead{padding:3.2rem 0 1.6rem}.skills{grid-template-columns:1fr}.sec-num{display:none}.ref{padding-left:2.2rem}}
+
+@media(max-width:600px){
+  body{font-size:16px}
+  .masthead{padding:3.2rem 0 1.6rem}
+  :root{--date-col:6.5rem}
+  .sec-head{grid-template-columns:1.4rem 1fr;column-gap:.7rem}
+  .sec-body{padding-left:0}
+  .pub-legend{padding-left:2.75rem}
+  .skills{grid-template-columns:1fr}
+  .course{grid-template-columns:4.4rem 1fr;row-gap:.15rem}
+  .cterm{grid-column:2;text-align:left}
+}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{.nav{display:none}body{background:#fff;font-size:11pt}section{padding:1.2rem 0}}
 </style>
@@ -120,62 +156,79 @@ section+section{border-top:1px solid var(--rule-soft)}
 <li><a href="#awards">Awards</a></li><li><a href="#skills">Skills</a></li>
 </ul></nav>
 <main class="page">
+
 <section id="research">
 <div class="sec-head"><span class="sec-num">I</span><h2 class="sec-title">Research Interests</h2></div>
+<div class="sec-body">
 <p class="statement">My work develops integrative approaches to understanding and treating neuropsychiatric disorders, centered on <span class="key">Alzheimer's disease and cognitive decline</span>. I combine multimodal neuroimaging, non-invasive <span class="key">brain stimulation</span> (TMS and theta-burst), and machine learning to identify where the aging brain's networks begin to fail, and to test whether targeted stimulation can restore them toward health. Earlier work extended the same electrophysiological and network-modeling toolkit to memory suppression and addiction, giving the current program a broad grounding in how disordered circuits can be measured and modulated.</p>
-<div class="interests"><b>Focus:</b>&nbsp; Alzheimer's disease &amp; MCI &middot; TMS / TBS &middot; EEG &amp; connectomics &middot; diffusion MRI &middot; machine learning for cognitive decline &middot; memory &amp; addiction</div>
+<div class="interests"><b>Focus</b>&nbsp;&nbsp; Alzheimer's disease &amp; MCI &middot; TMS / TBS &middot; EEG &amp; connectomics &middot; diffusion MRI &middot; machine learning for cognitive decline &middot; memory &amp; addiction</div>
+</div>
 </section>
+
 <section id="education">
 <div class="sec-head"><span class="sec-num">II</span><h2 class="sec-title">Education</h2></div>
-<div class="edu"><div class="edu-line"><span class="edu-deg">Ph.D. in Psychology</span><span class="edu-yr">Expected 2028</span></div><div class="edu-school">University of Arizona, Tucson, AZ</div><div class="edu-meta">Neuropsychology &amp; Experimental Methods &middot; Advisor: Prof. Yinghui Chou</div></div>
-<div class="edu"><div class="edu-line"><span class="edu-deg">M.Res. in Psychology &mdash; Distinction</span><span class="edu-yr">2022</span></div><div class="edu-school">University of Manchester, United Kingdom</div><div class="edu-meta">Thesis: <em>The Neural Mechanisms of Memory Suppression: An ERP and Fast Periodic Visual Stimulation Paradigm</em> &middot; Advisor: Dr. Jason Taylor</div></div>
-<div class="edu"><div class="edu-line"><span class="edu-deg">B.Sc. in Psychology &mdash; Highest Honors (Top 15%)</span><span class="edu-yr">2019</span></div><div class="edu-school">Southwest University, Chongqing, China</div><div class="edu-meta">Thesis: <em>The Mediating Role of Trait Anxiety on Procrastination and the Influence of Self-Efficacy</em> &middot; Advisor: Prof. Tingyong Feng</div></div>
+<div class="sec-body">
+<div class="edu"><div class="row"><span class="edu-deg">Ph.D. in Psychology</span><span class="meta">Expected 2028</span></div><div class="edu-school">University of Arizona, Tucson, AZ</div><div class="edu-meta">Neuropsychology &amp; Experimental Methods &middot; Advisor: Prof. Yinghui Chou</div></div>
+<div class="edu"><div class="row"><span class="edu-deg">M.Res. in Psychology &mdash; Distinction</span><span class="meta">2022</span></div><div class="edu-school">University of Manchester, United Kingdom</div><div class="edu-meta">Thesis: <em>The Neural Mechanisms of Memory Suppression: An ERP and Fast Periodic Visual Stimulation Paradigm</em> &middot; Advisor: Dr. Jason Taylor</div></div>
+<div class="edu"><div class="row"><span class="edu-deg">B.Sc. in Psychology &mdash; Highest Honors (Top 15%)</span><span class="meta">2019</span></div><div class="edu-school">Southwest University, Chongqing, China</div><div class="edu-meta">Thesis: <em>The Mediating Role of Trait Anxiety on Procrastination and the Influence of Self-Efficacy</em> &middot; Advisor: Prof. Tingyong Feng</div></div>
+</div>
 </section>
+
 <section id="publications">
 <div class="sec-head"><span class="sec-num">III</span><h2 class="sec-title">Publications</h2></div>
+<div class="sec-body">
 <div class="pub-group">Peer-Reviewed Journal Articles</div>
-<div class="ref"><span class="rn">13</span><span class="me">Zhang, H.</span>, Green, J., Dwivedi, S., &amp; Chou, Y.-H. (2025). Domain-specific efficacy of accelerated repetitive transcranial magnetic stimulation in neuropsychiatric disorders: a systematic review and meta-analysis. <span class="venue">Biological Psychiatry.</span><span class="tick"></span><span class="fa">first author</span></div>
-<div class="ref"><span class="rn">12</span><span class="me">Zhang, H.</span>, Yu, Q., Zhang, X., et&nbsp;al. (2025). An electroencephalography connectome predictive model of craving for methamphetamine. <span class="venue">International Journal of Clinical and Health Psychology, 25</span>(1), 100551.<span class="tick"></span><span class="fa">first author</span></div>
-<div class="ref"><span class="rn">11</span>Frank, L.&nbsp;R., Galinsky, V.&nbsp;L., <span class="me">Zhang, H.</span>, Hall, J.&nbsp;D., Bondi, M.&nbsp;W., &amp; Chou, Y. (2026). Spatially resolved EEG suggests therapeutic network modulation following iTBS in aging and mild cognitive impairment. <span class="venue">Frontiers in Human Neuroscience, 20</span>, 1741133.</div>
-<div class="ref"><span class="rn">10</span>Hall, J.&nbsp;D., Green, J.&nbsp;M., Chen, Y.-C.&nbsp;A., Liu, Y., <span class="me">Zhang, H.</span>, Sundman, M.&nbsp;H., &amp; Chou, Y. (2024). Exploring the potential of combining transcranial magnetic stimulation and electroencephalography to study mild cognitive impairment and Alzheimer's disease. <span class="venue">GeroScience, 46</span>(4), 3659&ndash;3693.</div>
-<div class="ref"><span class="rn">9</span>Zhang, T., Li, T., Huang, S., <span class="me">Zhang, H.</span>, Xu, X., Zheng, H., Zhong, Q., &amp; Gao, Y. (2024). Neural correlates of impaired learning and recognition of novel faces in mild cognitive impairment. <span class="venue">Clinical Neurophysiology, 160</span>, 28&ndash;37.</div>
-<div class="ref"><span class="rn">8</span>Zhao, D., Zeng, N., <span class="me">Zhang, H.</span>, Zhang, Y., Shan, J., Luo, H., Zangen, A., &amp; Yuan, T.-F. (2023). Deep magnetic stimulation targeting the medial prefrontal and anterior cingulate cortices for methamphetamine use disorder: a randomised, double-blind, sham-controlled study. <span class="venue">General Psychiatry, 36</span>(5), e101149.</div>
-<div class="ref"><span class="rn">7</span>Xu, L., <span class="me">Zhang, H.</span>, Zhou, C., et&nbsp;al. (2023). Deficits in psychological resilience and problem-solving ability in adolescents with suicidal ideation. <span class="venue">Child and Adolescent Psychiatry and Mental Health, 17</span>(1), 31.<span class="tick"></span><span class="fa">co-first</span></div>
-<div class="ref"><span class="rn">6</span>Huang, J., Wang, C., <span class="me">Zhang, H.</span>, Zheng, H., Huang, T., &amp; Di, J.&nbsp;Z. (2023). Neuroimaging and neuroendocrine insights into food cravings and appetite interventions in obesity. <span class="venue">Psychoradiology, 3</span>, kkad023.</div>
-<div class="ref"><span class="rn">5</span>Zeng, N., Zheng, H., Shi, T., <span class="me">Zhang, H.</span>, Wang, L.-X., Liang, Z.-Y., Sun, B., Liao, Y., et&nbsp;al. (2022). Impaired delay discounting and time sensitivity in methcathinone use disorder. <span class="venue">European Archives of Psychiatry and Clinical Neuroscience, 272</span>(8), 1595&ndash;1602.</div>
-<div class="ref"><span class="rn">4</span><span class="me">Zhang, H.</span>, Ou, H., Meng, D.-H., Lu, Q., Zhang, L., Lu, X., Yin, Z.-F., He, C., &amp; Shen, Y. (2021). Impaired cognitive empathy in outpatients with chronic musculoskeletal pain: a cross-sectional study. <span class="venue">Neural Plasticity, 2021</span>, 4430594.<span class="tick"></span><span class="fa">first author</span></div>
-<div class="ref"><span class="rn">3</span><span class="me">Zhang, H.</span>, Zhao, D., Liu, Y.-P., Wang, L.-X., Yang, B., &amp; Yuan, T.-F. (2021). Problem-solving deficits in methcathinone use disorder. <span class="venue">Psychopharmacology, 238</span>(9), 2515&ndash;2524.<span class="tick"></span><span class="fa">first author</span></div>
-<div class="ref"><span class="rn">2</span>Shen, Y., Cao, X., Zeng, N.-N., Wang, Y., <span class="me">Zhang, H.</span>, Zangen, A., &amp; Yuan, T.-F. (2021). Emergence of sexual dreams and emission following deep transcranial magnetic stimulation over the medial prefrontal and cingulate cortices. <span class="venue">CNS &amp; Neurological Disorders &mdash; Drug Targets, 20.</span></div>
-<div class="ref"><span class="rn">1</span><span class="me">Zhang, H.</span>, Zheng, H., Zhang, Y., &amp; Zhao, D. (2020). Commentary: Compulsive drug use is associated with imbalance of orbitofrontal- and prelimbic-striatal circuits in punishment-resistant individuals. <span class="venue">Frontiers in Neural Circuits, 14</span>, 49.<span class="tick"></span><span class="fa">first author</span></div>
+<div class="ref"><span class="rn">13</span><span><span class="me">Zhang, H.</span>, Green, J., Dwivedi, S., &amp; Chou, Y.-H. (2025). Domain-specific efficacy of accelerated repetitive transcranial magnetic stimulation in neuropsychiatric disorders: a systematic review and meta-analysis. <span class="venue">Biological Psychiatry.</span> <span class="fa">first author</span></span></div>
+<div class="ref"><span class="rn">12</span><span><span class="me">Zhang, H.</span>, Yu, Q., Zhang, X., et&nbsp;al. (2025). An electroencephalography connectome predictive model of craving for methamphetamine. <span class="venue">International Journal of Clinical and Health Psychology, 25</span>(1), 100551. <span class="fa">first author</span></span></div>
+<div class="ref"><span class="rn">11</span><span>Frank, L.&nbsp;R., Galinsky, V.&nbsp;L., <span class="me">Zhang, H.</span>, Hall, J.&nbsp;D., Bondi, M.&nbsp;W., &amp; Chou, Y. (2026). Spatially resolved EEG suggests therapeutic network modulation following iTBS in aging and mild cognitive impairment. <span class="venue">Frontiers in Human Neuroscience, 20</span>, 1741133.</span></div>
+<div class="ref"><span class="rn">10</span><span>Hall, J.&nbsp;D., Green, J.&nbsp;M., Chen, Y.-C.&nbsp;A., Liu, Y., <span class="me">Zhang, H.</span>, Sundman, M.&nbsp;H., &amp; Chou, Y. (2024). Exploring the potential of combining transcranial magnetic stimulation and electroencephalography to study mild cognitive impairment and Alzheimer's disease. <span class="venue">GeroScience, 46</span>(4), 3659&ndash;3693.</span></div>
+<div class="ref"><span class="rn">9</span><span>Zhang, T., Li, T., Huang, S., <span class="me">Zhang, H.</span>, Xu, X., Zheng, H., Zhong, Q., &amp; Gao, Y. (2024). Neural correlates of impaired learning and recognition of novel faces in mild cognitive impairment. <span class="venue">Clinical Neurophysiology, 160</span>, 28&ndash;37.</span></div>
+<div class="ref"><span class="rn">8</span><span>Zhao, D., Zeng, N., <span class="me">Zhang, H.</span>, Zhang, Y., Shan, J., Luo, H., Zangen, A., &amp; Yuan, T.-F. (2023). Deep magnetic stimulation targeting the medial prefrontal and anterior cingulate cortices for methamphetamine use disorder: a randomised, double-blind, sham-controlled study. <span class="venue">General Psychiatry, 36</span>(5), e101149.</span></div>
+<div class="ref"><span class="rn">7</span><span>Xu, L., <span class="me">Zhang, H.</span>, Zhou, C., et&nbsp;al. (2023). Deficits in psychological resilience and problem-solving ability in adolescents with suicidal ideation. <span class="venue">Child and Adolescent Psychiatry and Mental Health, 17</span>(1), 31.</span></div>
+<div class="ref"><span class="rn">6</span><span>Huang, J., Wang, C., <span class="me">Zhang, H.</span>, Zheng, H., Huang, T., &amp; Di, J.&nbsp;Z. (2023). Neuroimaging and neuroendocrine insights into food cravings and appetite interventions in obesity. <span class="venue">Psychoradiology, 3</span>, kkad023.</span></div>
+<div class="ref"><span class="rn">5</span><span>Zeng, N., Zheng, H., Shi, T., <span class="me">Zhang, H.</span>, Wang, L.-X., Liang, Z.-Y., Sun, B., Liao, Y., et&nbsp;al. (2022). Impaired delay discounting and time sensitivity in methcathinone use disorder. <span class="venue">European Archives of Psychiatry and Clinical Neuroscience, 272</span>(8), 1595&ndash;1602.</span></div>
+<div class="ref"><span class="rn">4</span><span><span class="me">Zhang, H.</span>, Ou, H., Meng, D.-H., Lu, Q., Zhang, L., Lu, X., Yin, Z.-F., He, C., &amp; Shen, Y. (2021). Impaired cognitive empathy in outpatients with chronic musculoskeletal pain: a cross-sectional study. <span class="venue">Neural Plasticity, 2021</span>, 4430594. <span class="fa">first author</span></span></div>
+<div class="ref"><span class="rn">3</span><span><span class="me">Zhang, H.</span>, Zhao, D., Liu, Y.-P., Wang, L.-X., Yang, B., &amp; Yuan, T.-F. (2021). Problem-solving deficits in methcathinone use disorder. <span class="venue">Psychopharmacology, 238</span>(9), 2515&ndash;2524. <span class="fa">first author</span></span></div>
+<div class="ref"><span class="rn">2</span><span>Shen, Y., Cao, X., Zeng, N.-N., Wang, Y., <span class="me">Zhang, H.</span>, Zangen, A., &amp; Yuan, T.-F. (2021). Emergence of sexual dreams and emission following deep transcranial magnetic stimulation over the medial prefrontal and cingulate cortices. <span class="venue">CNS &amp; Neurological Disorders &mdash; Drug Targets, 20.</span></span></div>
+<div class="ref"><span class="rn">1</span><span><span class="me">Zhang, H.</span>, Zheng, H., Zhang, Y., &amp; Zhao, D. (2020). Commentary: Compulsive drug use is associated with imbalance of orbitofrontal- and prelimbic-striatal circuits in punishment-resistant individuals. <span class="venue">Frontiers in Neural Circuits, 14</span>, 49. <span class="fa">first author</span></span></div>
 <div class="pub-group">Manuscripts Under Review &amp; In Preparation</div>
-<div class="ref"><span class="rn">&mdash;</span><span class="me">Zhang, H.</span>, Hickey, R., Chen, Y., Liu, Y., Ugonna, C., Chen, N., &amp; Chou, Y. (in prep). Tractography-guided theta-burst stimulation in aging and mild cognitive impairment.<span class="tick"></span><span class="fa">first author</span></div>
-<div class="ref"><span class="rn">&mdash;</span><span class="me">Zhang, H.</span>, Liu, Y., &amp; Chou, Y. (in prep). Network-targeted theta-burst stimulation drives microstructural remodeling in the hippocampal system.<span class="tick"></span><span class="fa">first author</span></div>
-<div class="pub-legend"><span class="tick"></span> denotes first- or co-first-authored work</div>
+<div class="ref"><span class="rn">&mdash;</span><span><span class="me">Zhang, H.</span>, Hickey, R., Chen, Y., Liu, Y., Ugonna, C., Chen, N., &amp; Chou, Y. (in prep). Tractography-guided theta-burst stimulation in aging and mild cognitive impairment. <span class="fa">first author</span></span></div>
+<div class="ref"><span class="rn">&mdash;</span><span><span class="me">Zhang, H.</span>, Liu, Y., &amp; Chou, Y. (in prep). Network-targeted theta-burst stimulation drives microstructural remodeling in the hippocampal system. <span class="fa">first author</span></span></div>
+<div class="pub-legend">"first author" / "co-first" tags denote lead-authored work</div>
+</div>
 </section>
+
 <section id="experience">
 <div class="sec-head"><span class="sec-num">IV</span><h2 class="sec-title">Research Experience</h2></div>
-<div class="job"><div class="job-line"><span class="job-role">Graduate Research Assistant &middot; Neuroimaging &amp; Brain Stimulation Laboratory</span><span class="job-dates">Sep 2023 &ndash; Present</span></div><div class="job-org">University of Arizona &middot; Advisor: Prof. Yinghui Chou</div><ul><li>Lead development of multimodal neuroimaging biomarkers for early-stage Alzheimer's diagnosis and longitudinal tracking of disease progression.</li><li>Design and run clinical brain-stimulation protocols (TMS / TBS) probing target engagement and therapeutic efficacy in MCI and AD populations.</li><li>Build and validate machine-learning pipelines predicting cognitive decline from structural, functional, and diffusion MRI.</li><li>Coordinate multi-site acquisition, supervise research staff, and oversee IRB-compliant enrollment and assessment.</li></ul></div>
-<div class="job"><div class="job-line"><span class="job-role">Research Scientist &middot; Neuromodulation &amp; Addiction Laboratory</span><span class="job-dates">Nov 2021 &ndash; Jul 2023</span></div><div class="job-org">Shanghai Key Laboratory of Psychotic Disorders, Shanghai Jiao Tong University &middot; Advisor: Prof. Tifei Yuan</div><ul><li>Managed laboratory operations: recruitment, clinical screening (MMSE, DSM-V), and EEG / behavioral acquisition.</li><li>Directed a randomized controlled trial of repetitive deep TMS targeting methamphetamine craving and cue reactivity.</li><li>Built connectome predictive models on EEG source-estimated connectivity, characterizing time&ndash;frequency&ndash;phase correlates of craving.</li><li>Supervised junior assistants and coordinated cross-institutional substance-use-disorder collaborations.</li></ul></div>
-<div class="job"><div class="job-line"><span class="job-role">Graduate Research Assistant &middot; Cognitive Neuroscience Laboratory</span><span class="job-dates">Jun 2019 &ndash; Sep 2021</span></div><div class="job-org">Division of Neuroscience &amp; Experimental Psychology, University of Manchester &middot; Advisor: Dr. Jason Taylor</div><ul><li>Designed experimental paradigms probing the neural mechanisms of memory suppression and inhibitory control.</li><li>Ran ERP and Fast Periodic Visual Stimulation EEG studies quantifying automatic responses during directed forgetting.</li><li>Led analysis pipelines and prepared peer-reviewed manuscripts on the neurocognitive basis of unwanted memory suppression.</li></ul></div>
-<div class="job"><div class="job-line"><span class="job-role">Research Assistant &middot; Clinical Neurophysiology Unit</span><span class="job-dates">Mar 2020 &ndash; Aug 2020</span></div><div class="job-org">First Affiliated Hospital of Nanjing Medical University &middot; Advisor: Prof. Ying Shen</div><ul><li>Investigated neural plasticity in chronic pain using combined TMS&ndash;EEG and paired-pulse TMS.</li><li>Implemented naturalistic movie-based stimulation with synchronized behavioral and electrophysiological recording.</li><li>Trained clinical staff on TMS and EEG acquisition, ensuring procedural fidelity and data quality.</li></ul></div>
-<div class="job"><div class="job-line"><span class="job-role">Undergraduate Research Assistant &middot; Behavioral Neuroscience Laboratory</span><span class="job-dates">Sep 2018 &ndash; Mar 2019</span></div><div class="job-org">School of Psychology, Southwest University &middot; Advisor: Prof. Tingyong Feng</div><ul><li>Designed psychometric instruments examining trait anxiety as a mediator of procrastination.</li><li>Performed structural equation modeling and mediation analysis to test theoretical hypotheses.</li><li>Presented findings at symposia and contributed to manuscript preparation.</li></ul></div>
+<div class="sec-body">
+<div class="job"><div class="row"><span class="job-role">Graduate Research Assistant &middot; Neuroimaging &amp; Brain Stimulation Laboratory</span><span class="meta">Sep 2023 &ndash; Present</span></div><div class="job-org">University of Arizona &middot; Advisor: Prof. Yinghui Chou</div><ul><li>Lead development of multimodal neuroimaging biomarkers for early-stage Alzheimer's diagnosis and longitudinal tracking of disease progression.</li><li>Design and run clinical brain-stimulation protocols (TMS / TBS) probing target engagement and therapeutic efficacy in MCI and AD populations.</li><li>Build and validate machine-learning pipelines predicting cognitive decline from structural, functional, and diffusion MRI.</li><li>Coordinate multi-site acquisition, supervise research staff, and oversee IRB-compliant enrollment and assessment.</li></ul></div>
+<div class="job"><div class="row"><span class="job-role">Research Scientist &middot; Neuromodulation &amp; Addiction Laboratory</span><span class="meta">Nov 2021 &ndash; Jul 2023</span></div><div class="job-org">Shanghai Key Laboratory of Psychotic Disorders, Shanghai Jiao Tong University &middot; Advisor: Prof. Tifei Yuan</div><ul><li>Managed laboratory operations: recruitment, clinical screening (MMSE, DSM-V), and EEG / behavioral acquisition.</li><li>Directed a randomized controlled trial of repetitive deep TMS targeting methamphetamine craving and cue reactivity.</li><li>Built connectome predictive models on EEG source-estimated connectivity, characterizing time&ndash;frequency&ndash;phase correlates of craving.</li><li>Supervised junior assistants and coordinated cross-institutional substance-use-disorder collaborations.</li></ul></div>
+<div class="job"><div class="row"><span class="job-role">Graduate Research Assistant &middot; Cognitive Neuroscience Laboratory</span><span class="meta">Jun 2019 &ndash; Sep 2021</span></div><div class="job-org">Division of Neuroscience &amp; Experimental Psychology, University of Manchester &middot; Advisor: Dr. Jason Taylor</div><ul><li>Designed experimental paradigms probing the neural mechanisms of memory suppression and inhibitory control.</li><li>Ran ERP and Fast Periodic Visual Stimulation EEG studies quantifying automatic responses during directed forgetting.</li><li>Led analysis pipelines and prepared peer-reviewed manuscripts on the neurocognitive basis of unwanted memory suppression.</li></ul></div>
+<div class="job"><div class="row"><span class="job-role">Research Assistant &middot; Clinical Neurophysiology Unit</span><span class="meta">Mar 2020 &ndash; Aug 2020</span></div><div class="job-org">First Affiliated Hospital of Nanjing Medical University &middot; Advisor: Prof. Ying Shen</div><ul><li>Investigated neural plasticity in chronic pain using combined TMS&ndash;EEG and paired-pulse TMS.</li><li>Implemented naturalistic movie-based stimulation with synchronized behavioral and electrophysiological recording.</li><li>Trained clinical staff on TMS and EEG acquisition, ensuring procedural fidelity and data quality.</li></ul></div>
+<div class="job"><div class="row"><span class="job-role">Undergraduate Research Assistant &middot; Behavioral Neuroscience Laboratory</span><span class="meta">Sep 2018 &ndash; Mar 2019</span></div><div class="job-org">School of Psychology, Southwest University &middot; Advisor: Prof. Tingyong Feng</div><ul><li>Designed psychometric instruments examining trait anxiety as a mediator of procrastination.</li><li>Performed structural equation modeling and mediation analysis to test theoretical hypotheses.</li><li>Presented findings at symposia and contributed to manuscript preparation.</li></ul></div>
+</div>
 </section>
+
 <section id="teaching">
 <div class="sec-head"><span class="sec-num">V</span><h2 class="sec-title">Teaching &amp; Mentorship</h2></div>
+<div class="sec-body">
 <div class="tblock"><div class="trole">Instructor of Record</div><div class="torg">University of Arizona</div>
-<div class="course"><span class="ccode">CGSC 321</span><span class="cname">Methods in Cognitive Science</span><span class="cterm">Summer 2025 &middot; online</span></div>
+<div class="course"><span class="ccode">CGSC 321</span><span class="cname">Methods in Cognitive Science</span><span class="cterm">Summer 2025</span></div>
 <div class="course"><span class="ccode">PSY 413</span><span class="cname">Drugs, Brain, and Behavior</span><span class="cterm">Winter 2025</span></div>
-<div class="eval"><div class="eval-stat">Student course survey (CGSC 321): mean <b>4.95 / 5.00</b> across 32 items, with a perfect 5.00 on 29 of them, spanning respect, feedback quality, clarity of expectations, and organization. <span style="color:var(--faint);font-family:var(--mono);font-size:.72rem;">(25% response rate)</span></div>
-<p class="eval-q">Hangbin gave very thoughtful feedback on our discussion posts, appraising where we exceeded and where we could improve.<cite>&mdash; Student course survey, Summer 2025</cite></p></div></div>
+<div class="eval"><div class="eval-stat">Rated <b>4.95 / 5.00</b> overall on the student course survey for CGSC 321, with a perfect 5.00 on 29 of 32 items&mdash;including respect for students, quality of feedback, clarity of expectations, and course organization. <span class="eval-rate">(25% response rate)</span></div>
+<p class="eval-q">Students singled out the individualized, constructive feedback on their written work as a strength of the course.<cite>&mdash; Paraphrased from student course survey, Summer 2025</cite></p></div></div>
 <div class="tblock"><div class="trole">Teaching Assistant</div><div class="torg">University of Arizona &middot; <span class="mono">Sep 2023 &ndash; Present</span></div>
 <div class="course"><span class="ccode">PSY 150</span><span class="cname">The Structure of Mind and Behavior</span><span class="cterm">Fall 2024</span></div>
 <div class="course"><span class="ccode">PSY 300</span><span class="cname">Mind and Brain</span><span class="cterm">Fall 2023 &ndash; Spring 2026</span></div>
 <p class="tcap">Delivered guest lectures, facilitated discussions, and mentored students on research design, data analysis, and capstone projects in cognitive neuroscience.</p></div>
 <div class="tblock"><div class="trole">Undergraduate Research Mentor</div><div class="torg">University of Arizona &middot; <span class="mono">Sep 2024 &ndash; Present</span></div>
 <p class="tcap">Supervised undergraduates on statistical modeling, data visualization, experimental design, and scientific writing.</p></div>
+</div>
 </section>
+
 <section id="service">
 <div class="sec-head"><span class="sec-num">VI</span><h2 class="sec-title">Service &amp; Peer Review</h2></div>
+<div class="sec-body">
 <div class="sub">Ad-hoc Journal Reviewer</div>
 <div class="rev"><em>Frontiers in Psychology</em> &middot; <em>Frontiers in Human Neuroscience</em> &middot; <em>Frontiers in Behavioral Neuroscience</em> &middot; <em>Frontiers in Systems Neuroscience</em> &middot; <em>Acta Psychologica</em> &middot; <em>Journal of Pain Research</em></div>
 <div class="rev"><em>BMC Psychiatry</em> &middot; <em>Frontiers in Psychiatry</em> &middot; <em>Clinical Interventions in Aging</em> &middot; <em>Neuropsychiatric Disease and Treatment</em></div>
@@ -187,9 +240,12 @@ section+section{border-top:1px solid var(--rule-soft)}
 <div class="srv"><span>Student Representative, Department of Psychology, University of Arizona</span><span class="sy">2024&ndash;2026</span></div>
 <div class="srv"><span>Reviewer, Undergraduate Research Travel Grants, University of Arizona</span><span class="sy">2026</span></div>
 <div class="srv"><span>Editor, Application Statement Feedback Program (ASFP)</span><span class="sy">2023</span></div>
+</div>
 </section>
+
 <section id="awards">
 <div class="sec-head"><span class="sec-num">VII</span><h2 class="sec-title">Awards &amp; Honors</h2></div>
+<div class="sec-body">
 <div class="award"><span>Graduate Summer Fellowship <span class="amt">$3,500</span> &mdash; Department of Psychology, University of Arizona</span><span class="ay">2026</span></div>
 <div class="award"><span>Graduate Summer Fellowship <span class="amt">$3,000</span> &mdash; Department of Cognitive Science, University of Arizona</span><span class="ay">2026</span></div>
 <div class="award"><span>Galileo Circle Scholarship <span class="amt">$1,000</span> &mdash; University of Arizona</span><span class="ay">2026&ndash;27</span></div>
@@ -198,16 +254,21 @@ section+section{border-top:1px solid var(--rule-soft)}
 <div class="award"><span>Merit Student of the Year (Top 3%) &mdash; Southwest University</span><span class="ay">2018</span></div>
 <div class="award"><span>First-Class Academic Scholarship <span class="amt">$800</span> &mdash; Southwest University</span><span class="ay">2018</span></div>
 <div class="award"><span>Excellent Volunteer Award, Faculty of Psychology (Top 3%) &mdash; Southwest University</span><span class="ay">2017</span></div>
+</div>
 </section>
+
 <section id="skills">
 <div class="sec-head"><span class="sec-num">VIII</span><h2 class="sec-title">Technical Proficiencies</h2></div>
+<div class="sec-body">
 <div class="skills">
 <div><div class="scat">Neuroimaging &amp; Analysis</div><div class="sval">SPM &middot; FSL &middot; FreeSurfer &middot; MRtrix3 &middot; EEGLAB &middot; MNE-Python</div></div>
 <div><div class="scat">Programming</div><div class="sval">Python &middot; MATLAB &middot; R &middot; shell scripting</div></div>
 <div><div class="scat">Research Methods</div><div class="sval">Study design &middot; advanced statistical modeling &middot; machine learning for biomedical applications &middot; NLP</div></div>
 <div><div class="scat">Languages</div><div class="sval">English (fluent) &middot; Mandarin (native)</div></div>
 </div>
+</div>
 </section>
+
 <footer class="foot">&copy; 2026 Hangbin Zhang &middot; Updated July 2026 &middot; <a href="mailto:hangbinzhang@arizona.edu">hangbinzhang@arizona.edu</a></footer>
 </main>
 <script>
