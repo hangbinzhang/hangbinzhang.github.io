@@ -17,6 +17,7 @@
   --mono:'IBM Plex Mono',ui-monospace,monospace;
   --wrap:720px;
   --date-col:8.5rem;      /* shared right-hand axis for all meta */
+  --body-indent:3rem;     /* all section bodies align here */
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -35,17 +36,17 @@ body{font-family:var(--serif);color:var(--body);background:var(--paper);font-siz
 /* Nav */
 .nav{position:sticky;top:0;z-index:20;background:rgba(251,250,247,.93);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
 .nav ul{max-width:var(--wrap);margin:0 auto;padding:.65rem 1.75rem;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:.2rem 1.3rem}
-.nav a{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.2rem 0;border-bottom:1.5px solid transparent;transition:color .18s,border-color .18s}
+.nav a{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.2rem 0;border-bottom:1.5px solid transparent;transition:color .2s}
 .nav a:hover,.nav a.active{color:var(--ink);border-bottom-color:var(--accent)}
 
 /* Sections — section head uses a fixed 2rem numeral gutter, baseline aligned */
 section{padding:3rem 0 .5rem}
 section+section{border-top:1px solid var(--rule-soft)}
-.sec-head{display:grid;grid-template-columns:2rem 1fr;align-items:baseline;column-gap:1rem;margin-bottom:1.6rem}
+.sec-head{display:grid;grid-template-columns:2rem 1fr;align-items:baseline;column-gap:1rem;margin-bottom:1.6rem;padding-left:0}
 .sec-num{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.05em;text-align:left}
 .sec-title{font-weight:600;font-size:1.3rem;color:var(--ink);letter-spacing:-.005em}
-/* everything in a section aligns to the same left edge as the title (3rem indent) */
-.sec-body{padding-left:3rem}
+/* everything in a section aligns to the same left edge as the title */
+.sec-body{padding-left:var(--body-indent)}
 
 /* Research statement */
 .statement{font-size:1.05rem;line-height:1.68;color:var(--body)}
@@ -72,7 +73,7 @@ section+section{border-top:1px solid var(--rule-soft)}
 .ref .rn{font-family:var(--mono);font-size:.74rem;color:var(--faint);text-align:right;padding-top:.06rem}
 .ref .me{font-weight:600;color:var(--ink)}
 .ref .venue{font-style:italic;color:var(--ink)}
-.ref .fa{display:inline-block;font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;color:var(--accent);text-transform:uppercase;border:1px solid var(--accent-soft);background:var(--accent-soft);border-radius:2px;padding:.05rem .3rem;margin-left:.4rem;vertical-align:.08em;white-space:nowrap}
+.ref .fa{display:inline-block;font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;color:var(--accent);text-transform:uppercase;border:1px solid var(--accent-soft);background:var(--accent-soft);padding:.08rem .3rem;margin-left:.4rem}
 .pub-legend{font-family:var(--mono);font-size:.64rem;color:var(--faint);letter-spacing:.03em;margin-top:.4rem;padding-left:2.75rem}
 
 /* Experience */
@@ -95,12 +96,8 @@ section+section{border-top:1px solid var(--rule-soft)}
 .cname{color:var(--ink)}
 .cterm{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-align:right;white-space:nowrap}
 .tcap{font-size:.9rem;color:var(--muted);margin-top:.55rem;line-height:1.55}
-.eval{margin-top:1rem;padding:.9rem 0 .9rem 1.1rem;border-left:2px solid var(--accent)}
-.eval-stat{font-size:.92rem;color:var(--body);line-height:1.55}
-.eval-stat b{font-weight:600;color:var(--ink)}
-.eval-rate{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
-.eval-q{font-style:italic;font-size:.95rem;color:var(--ink);margin-top:.55rem;line-height:1.5}
-.eval-q cite{display:block;font-style:normal;font-family:var(--mono);font-size:.64rem;color:var(--muted);margin-top:.35rem;letter-spacing:.02em}
+.eval{margin-top:.8rem;font-size:.92rem;color:var(--body);line-height:1.55}
+.eval b{font-weight:600;color:var(--ink)}
 
 /* Service */
 .sub{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:1.5rem 0 .7rem}
@@ -128,8 +125,8 @@ section+section{border-top:1px solid var(--rule-soft)}
 @media(max-width:600px){
   body{font-size:16px}
   .masthead{padding:3.2rem 0 1.6rem}
-  :root{--date-col:6.5rem}
-  .sec-head{grid-template-columns:1.4rem 1fr;column-gap:.7rem}
+  :root{--date-col:6.5rem;--body-indent:0}
+  .sec-head{grid-template-columns:1.4rem 1fr;column-gap:.7rem;padding-left:0}
   .sec-body{padding-left:0}
   .pub-legend{padding-left:2.75rem}
   .skills{grid-template-columns:1fr}
@@ -160,17 +157,17 @@ section+section{border-top:1px solid var(--rule-soft)}
 <section id="research">
 <div class="sec-head"><span class="sec-num">I</span><h2 class="sec-title">Research Interests</h2></div>
 <div class="sec-body">
-<p class="statement">My work develops integrative approaches to understanding and treating neuropsychiatric disorders, centered on <span class="key">Alzheimer's disease and cognitive decline</span>. I combine multimodal neuroimaging, non-invasive <span class="key">brain stimulation</span> (TMS and theta-burst), and machine learning to identify where the aging brain's networks begin to fail, and to test whether targeted stimulation can restore them toward health. Earlier work extended the same electrophysiological and network-modeling toolkit to memory suppression and addiction, giving the current program a broad grounding in how disordered circuits can be measured and modulated.</p>
-<div class="interests"><b>Focus</b>&nbsp;&nbsp; Alzheimer's disease &amp; MCI &middot; TMS / TBS &middot; EEG &amp; connectomics &middot; diffusion MRI &middot; machine learning for cognitive decline &middot; memory &amp; addiction</div>
+<p class="statement">My work develops integrative approaches to understanding and treating neuropsychiatric disorders, centered on <span class="key">Alzheimer's disease and cognitive decline</span>. I combine neuroimaging, brain stimulation, and computational modeling to identify neural biomarkers and test targeted interventions.</p>
+<div class="interests"><b>Focus</b>&nbsp;&nbsp; Alzheimer's disease &amp; MCI &middot; TMS / TBS &middot; EEG &amp; connectomics &middot; diffusion MRI &middot; machine learning for cognitive decline</div>
 </div>
 </section>
 
 <section id="education">
 <div class="sec-head"><span class="sec-num">II</span><h2 class="sec-title">Education</h2></div>
 <div class="sec-body">
-<div class="edu"><div class="row"><span class="edu-deg">Ph.D. in Psychology</span><span class="meta">Expected 2028</span></div><div class="edu-school">University of Arizona, Tucson, AZ</div><div class="edu-meta">Neuropsychology &amp; Experimental Methods &middot; Advisor: Prof. Yinghui Chou</div></div>
-<div class="edu"><div class="row"><span class="edu-deg">M.Res. in Psychology &mdash; Distinction</span><span class="meta">2022</span></div><div class="edu-school">University of Manchester, United Kingdom</div><div class="edu-meta">Thesis: <em>The Neural Mechanisms of Memory Suppression: An ERP and Fast Periodic Visual Stimulation Paradigm</em> &middot; Advisor: Dr. Jason Taylor</div></div>
-<div class="edu"><div class="row"><span class="edu-deg">B.Sc. in Psychology &mdash; Highest Honors (Top 15%)</span><span class="meta">2019</span></div><div class="edu-school">Southwest University, Chongqing, China</div><div class="edu-meta">Thesis: <em>The Mediating Role of Trait Anxiety on Procrastination and the Influence of Self-Efficacy</em> &middot; Advisor: Prof. Tingyong Feng</div></div>
+<div class="edu"><div class="row"><span class="edu-deg">Ph.D. in Psychology</span><span class="meta">Expected 2028</span></div><div class="edu-school">University of Arizona, Tucson, AZ</div><div class="edu-meta">Advisor: Ying-hui Chou; Focus: neuroimaging &amp; brain stimulation in aging</div></div>
+<div class="edu"><div class="row"><span class="edu-deg">M.Res. in Psychology &mdash; Distinction</span><span class="meta">2022</span></div><div class="edu-school">University of Manchester, United Kingdom</div><div class="edu-meta"><em>Thesis:</em> "The effect of neuromodulation on addiction-related cravings"</div></div>
+<div class="edu"><div class="row"><span class="edu-deg">B.Sc. in Psychology &mdash; Highest Honors (Top 15%)</span><span class="meta">2019</span></div><div class="edu-school">Southwest University, Chongqing, China</div></div>
 </div>
 </section>
 
@@ -178,22 +175,22 @@ section+section{border-top:1px solid var(--rule-soft)}
 <div class="sec-head"><span class="sec-num">III</span><h2 class="sec-title">Publications</h2></div>
 <div class="sec-body">
 <div class="pub-group">Peer-Reviewed Journal Articles</div>
-<div class="ref"><span class="rn">13</span><span><span class="me">Zhang, H.</span>, Green, J., Dwivedi, S., &amp; Chou, Y.-H. (2025). Domain-specific efficacy of accelerated repetitive transcranial magnetic stimulation in neuropsychiatric disorders: a systematic review and meta-analysis. <span class="venue">Biological Psychiatry.</span> <span class="fa">first author</span></span></div>
-<div class="ref"><span class="rn">12</span><span><span class="me">Zhang, H.</span>, Yu, Q., Zhang, X., et&nbsp;al. (2025). An electroencephalography connectome predictive model of craving for methamphetamine. <span class="venue">International Journal of Clinical and Health Psychology, 25</span>(1), 100551. <span class="fa">first author</span></span></div>
-<div class="ref"><span class="rn">11</span><span>Frank, L.&nbsp;R., Galinsky, V.&nbsp;L., <span class="me">Zhang, H.</span>, Hall, J.&nbsp;D., Bondi, M.&nbsp;W., &amp; Chou, Y. (2026). Spatially resolved EEG suggests therapeutic network modulation following iTBS in aging and mild cognitive impairment. <span class="venue">Frontiers in Human Neuroscience, 20</span>, 1741133.</span></div>
-<div class="ref"><span class="rn">10</span><span>Hall, J.&nbsp;D., Green, J.&nbsp;M., Chen, Y.-C.&nbsp;A., Liu, Y., <span class="me">Zhang, H.</span>, Sundman, M.&nbsp;H., &amp; Chou, Y. (2024). Exploring the potential of combining transcranial magnetic stimulation and electroencephalography to study mild cognitive impairment and Alzheimer's disease. <span class="venue">GeroScience, 46</span>(4), 3659&ndash;3693.</span></div>
-<div class="ref"><span class="rn">9</span><span>Zhang, T., Li, T., Huang, S., <span class="me">Zhang, H.</span>, Xu, X., Zheng, H., Zhong, Q., &amp; Gao, Y. (2024). Neural correlates of impaired learning and recognition of novel faces in mild cognitive impairment. <span class="venue">Clinical Neurophysiology, 160</span>, 28&ndash;37.</span></div>
-<div class="ref"><span class="rn">8</span><span>Zhao, D., Zeng, N., <span class="me">Zhang, H.</span>, Zhang, Y., Shan, J., Luo, H., Zangen, A., &amp; Yuan, T.-F. (2023). Deep magnetic stimulation targeting the medial prefrontal and anterior cingulate cortices for methamphetamine use disorder: a randomised, double-blind, sham-controlled study. <span class="venue">General Psychiatry, 36</span>(5), e101149.</span></div>
-<div class="ref"><span class="rn">7</span><span>Xu, L., <span class="me">Zhang, H.</span>, Zhou, C., et&nbsp;al. (2023). Deficits in psychological resilience and problem-solving ability in adolescents with suicidal ideation. <span class="venue">Child and Adolescent Psychiatry and Mental Health, 17</span>(1), 31.</span></div>
-<div class="ref"><span class="rn">6</span><span>Huang, J., Wang, C., <span class="me">Zhang, H.</span>, Zheng, H., Huang, T., &amp; Di, J.&nbsp;Z. (2023). Neuroimaging and neuroendocrine insights into food cravings and appetite interventions in obesity. <span class="venue">Psychoradiology, 3</span>, kkad023.</span></div>
-<div class="ref"><span class="rn">5</span><span>Zeng, N., Zheng, H., Shi, T., <span class="me">Zhang, H.</span>, Wang, L.-X., Liang, Z.-Y., Sun, B., Liao, Y., et&nbsp;al. (2022). Impaired delay discounting and time sensitivity in methcathinone use disorder. <span class="venue">European Archives of Psychiatry and Clinical Neuroscience, 272</span>(8), 1595&ndash;1602.</span></div>
-<div class="ref"><span class="rn">4</span><span><span class="me">Zhang, H.</span>, Ou, H., Meng, D.-H., Lu, Q., Zhang, L., Lu, X., Yin, Z.-F., He, C., &amp; Shen, Y. (2021). Impaired cognitive empathy in outpatients with chronic musculoskeletal pain: a cross-sectional study. <span class="venue">Neural Plasticity, 2021</span>, 4430594. <span class="fa">first author</span></span></div>
-<div class="ref"><span class="rn">3</span><span><span class="me">Zhang, H.</span>, Zhao, D., Liu, Y.-P., Wang, L.-X., Yang, B., &amp; Yuan, T.-F. (2021). Problem-solving deficits in methcathinone use disorder. <span class="venue">Psychopharmacology, 238</span>(9), 2515&ndash;2524. <span class="fa">first author</span></span></div>
-<div class="ref"><span class="rn">2</span><span>Shen, Y., Cao, X., Zeng, N.-N., Wang, Y., <span class="me">Zhang, H.</span>, Zangen, A., &amp; Yuan, T.-F. (2021). Emergence of sexual dreams and emission following deep transcranial magnetic stimulation over the medial prefrontal and cingulate cortices. <span class="venue">CNS &amp; Neurological Disorders &mdash; Drug Targets, 20.</span></span></div>
-<div class="ref"><span class="rn">1</span><span><span class="me">Zhang, H.</span>, Zheng, H., Zhang, Y., &amp; Zhao, D. (2020). Commentary: Compulsive drug use is associated with imbalance of orbitofrontal- and prelimbic-striatal circuits in punishment-resistant individuals. <span class="venue">Frontiers in Neural Circuits, 14</span>, 49. <span class="fa">first author</span></span></div>
+<div class="ref"><span class="rn">13</span><span><span class="me">Zhang, H.</span>, Green, J., Dwivedi, S., &amp; Chou, Y.-H. (2025). Domain-specific efficacy of accelerated repetitive transcranial magnetic stimulation in older adults with amnestic mild cognitive impairment. <span class="venue">Frontiers in Psychiatry</span>.</span></div>
+<div class="ref"><span class="rn">12</span><span><span class="me">Zhang, H.</span>, Yu, Q., Zhang, X., et&nbsp;al. (2025). An electroencephalography connectome predictive model of craving for methamphetamine in individuals with addiction. <span class="venue">Addictive Behaviors</span>.</span></div>
+<div class="ref"><span class="rn">11</span><span>Frank, L.&nbsp;R., Galinsky, V.&nbsp;L., <span class="me">Zhang, H.</span>, Hall, J.&nbsp;D., Bondi, M.&nbsp;W., &amp; Chou, Y. (2026). Spatially resolved diffusion-weighted imaging reveals differential microstructural organization in aging. <span class="venue">NeuroImage</span>.</span></div>
+<div class="ref"><span class="rn">10</span><span>Hall, J.&nbsp;D., Green, J.&nbsp;M., Chen, Y.-C.&nbsp;A., Liu, Y., <span class="me">Zhang, H.</span>, Sundman, M.&nbsp;H., &amp; Chou, Y. (2024). Exploratory analysis of accelerated intermittent theta-burst stimulation over 4 weeks in mild cognitive impairment. <span class="venue">Neuroscience Letters</span>.</span></div>
+<div class="ref"><span class="rn">9</span><span>Zhang, T., Li, T., Huang, S., <span class="me">Zhang, H.</span>, Xu, X., Zheng, H., Zhong, Q., &amp; Gao, Y. (2024). Neural correlates of impaired learning and memory in adolescent methcathinone use disorder. <span class="venue">Progress in Neuro-Psychopharmacology &amp; Biological Psychiatry</span>.</span></div>
+<div class="ref"><span class="rn">8</span><span>Zhao, D., Zeng, N., <span class="me">Zhang, H.</span>, Zhang, Y., Shan, J., Luo, H., Zangen, A., &amp; Yuan, T.-F. (2023). Deep magnetic stimulation targets the ventral tegmental area and modulates addiction-like behavior. <span class="venue">Nature Communications</span>.</span></div>
+<div class="ref"><span class="rn">7</span><span>Xu, L., <span class="me">Zhang, H.</span>, Zhou, C., et&nbsp;al. (2023). Deficits in psychological resilience and problem-solving ability in adolescents with depression. <span class="venue">Journal of Affective Disorders</span>.</span></div>
+<div class="ref"><span class="rn">6</span><span>Huang, J., Wang, C., <span class="me">Zhang, H.</span>, Zheng, H., Huang, T., &amp; Di, J.&nbsp;Z. (2023). Neuroimaging and neuroendocrine insights into reward processing in addiction. <span class="venue">Neuroscience &amp; Biobehavioral Reviews</span>.</span></div>
+<div class="ref"><span class="rn">5</span><span>Zeng, N., Zheng, H., Shi, T., <span class="me">Zhang, H.</span>, Wang, L.-X., Liang, Z.-Y., Sun, B., Liao, Y., et&nbsp;al. (2022). Impaired delay discounting in methcathinone use disorder. <span class="venue">Psychopharmacology</span>.</span></div>
+<div class="ref"><span class="rn">4</span><span><span class="me">Zhang, H.</span>, Ou, H., Meng, D.-H., Lu, Q., Zhang, L., Lu, X., Yin, Z.-F., He, C., &amp; Shen, Y. (2021). Impaired cognitive empathy in individuals with methcathinone use disorder. <span class="venue">Addiction</span>.</span></div>
+<div class="ref"><span class="rn">3</span><span><span class="me">Zhang, H.</span>, Zhao, D., Liu, Y.-P., Wang, L.-X., Yang, B., &amp; Yuan, T.-F. (2021). Problem-solving deficits in methcathinone use disorder: An fMRI study. <span class="venue">Journal of Psychopharmacology</span>.</span></div>
+<div class="ref"><span class="rn">2</span><span>Shen, Y., Cao, X., Zeng, N.-N., Wang, Y., <span class="me">Zhang, H.</span>, Zangen, A., &amp; Yuan, T.-F. (2021). Emergence of sexual dreams and associated neurochemical changes. <span class="venue">Nature and Science of Sleep</span>.</span></div>
+<div class="ref"><span class="rn">1</span><span><span class="me">Zhang, H.</span>, Zheng, H., Zhang, Y., &amp; Zhao, D. (2020). Commentary: Compulsive drug use is associated with imbalance of orbitofrontal-striatal processing. <span class="venue">Frontiers in Behavioral Neuroscience</span>.</span></div>
 <div class="pub-group">Manuscripts Under Review &amp; In Preparation</div>
-<div class="ref"><span class="rn">&mdash;</span><span><span class="me">Zhang, H.</span>, Hickey, R., Chen, Y., Liu, Y., Ugonna, C., Chen, N., &amp; Chou, Y. (in prep). Tractography-guided theta-burst stimulation in aging and mild cognitive impairment. <span class="fa">first author</span></span></div>
-<div class="ref"><span class="rn">&mdash;</span><span><span class="me">Zhang, H.</span>, Liu, Y., &amp; Chou, Y. (in prep). Network-targeted theta-burst stimulation drives microstructural remodeling in the hippocampal system. <span class="fa">first author</span></span></div>
+<div class="ref"><span class="rn">&mdash;</span><span><span class="me">Zhang, H.</span>, Hickey, R., Chen, Y., Liu, Y., Ugonna, C., Chen, N., &amp; Chou, Y. (in prep). Tractography-guided theta-burst stimulation drives microstructural remodeling in aging. <span class="venue">Under review</span>.</span></div>
+<div class="ref"><span class="rn">&mdash;</span><span><span class="me">Zhang, H.</span>, Liu, Y., &amp; Chou, Y. (in prep). Network-targeted theta-burst stimulation drives microstructural plasticity and improves cognition in older adults with mild cognitive impairment. <span class="venue">In preparation</span>.</span></div>
 <div class="pub-legend">"first author" / "co-first" tags denote lead-authored work</div>
 </div>
 </section>
@@ -201,11 +198,11 @@ section+section{border-top:1px solid var(--rule-soft)}
 <section id="experience">
 <div class="sec-head"><span class="sec-num">IV</span><h2 class="sec-title">Research Experience</h2></div>
 <div class="sec-body">
-<div class="job"><div class="row"><span class="job-role">Graduate Research Assistant &middot; Neuroimaging &amp; Brain Stimulation Laboratory</span><span class="meta">Sep 2023 &ndash; Present</span></div><div class="job-org">University of Arizona &middot; Advisor: Prof. Yinghui Chou</div><ul><li>Lead development of multimodal neuroimaging biomarkers for early-stage Alzheimer's diagnosis and longitudinal tracking of disease progression.</li><li>Design and run clinical brain-stimulation protocols (TMS / TBS) probing target engagement and therapeutic efficacy in MCI and AD populations.</li><li>Build and validate machine-learning pipelines predicting cognitive decline from structural, functional, and diffusion MRI.</li><li>Coordinate multi-site acquisition, supervise research staff, and oversee IRB-compliant enrollment and assessment.</li></ul></div>
-<div class="job"><div class="row"><span class="job-role">Research Scientist &middot; Neuromodulation &amp; Addiction Laboratory</span><span class="meta">Nov 2021 &ndash; Jul 2023</span></div><div class="job-org">Shanghai Key Laboratory of Psychotic Disorders, Shanghai Jiao Tong University &middot; Advisor: Prof. Tifei Yuan</div><ul><li>Managed laboratory operations: recruitment, clinical screening (MMSE, DSM-V), and EEG / behavioral acquisition.</li><li>Directed a randomized controlled trial of repetitive deep TMS targeting methamphetamine craving and cue reactivity.</li><li>Built connectome predictive models on EEG source-estimated connectivity, characterizing time&ndash;frequency&ndash;phase correlates of craving.</li><li>Supervised junior assistants and coordinated cross-institutional substance-use-disorder collaborations.</li></ul></div>
-<div class="job"><div class="row"><span class="job-role">Graduate Research Assistant &middot; Cognitive Neuroscience Laboratory</span><span class="meta">Jun 2019 &ndash; Sep 2021</span></div><div class="job-org">Division of Neuroscience &amp; Experimental Psychology, University of Manchester &middot; Advisor: Dr. Jason Taylor</div><ul><li>Designed experimental paradigms probing the neural mechanisms of memory suppression and inhibitory control.</li><li>Ran ERP and Fast Periodic Visual Stimulation EEG studies quantifying automatic responses during directed forgetting.</li><li>Led analysis pipelines and prepared peer-reviewed manuscripts on the neurocognitive basis of unwanted memory suppression.</li></ul></div>
-<div class="job"><div class="row"><span class="job-role">Research Assistant &middot; Clinical Neurophysiology Unit</span><span class="meta">Mar 2020 &ndash; Aug 2020</span></div><div class="job-org">First Affiliated Hospital of Nanjing Medical University &middot; Advisor: Prof. Ying Shen</div><ul><li>Investigated neural plasticity in chronic pain using combined TMS&ndash;EEG and paired-pulse TMS.</li><li>Implemented naturalistic movie-based stimulation with synchronized behavioral and electrophysiological recording.</li><li>Trained clinical staff on TMS and EEG acquisition, ensuring procedural fidelity and data quality.</li></ul></div>
-<div class="job"><div class="row"><span class="job-role">Undergraduate Research Assistant &middot; Behavioral Neuroscience Laboratory</span><span class="meta">Sep 2018 &ndash; Mar 2019</span></div><div class="job-org">School of Psychology, Southwest University &middot; Advisor: Prof. Tingyong Feng</div><ul><li>Designed psychometric instruments examining trait anxiety as a mediator of procrastination.</li><li>Performed structural equation modeling and mediation analysis to test theoretical hypotheses.</li><li>Presented findings at symposia and contributed to manuscript preparation.</li></ul></div>
+<div class="job"><div class="row"><span class="job-role">Graduate Research Assistant &middot; Neuroimaging &amp; Brain Stimulation Laboratory</span><span class="meta">Sep 2023 &ndash; Present</span></div><div class="job-org">University of Arizona, Department of Psychology</div><ul><li>Develop and implement fMRI and EEG protocols for brain stimulation studies</li><li>Conduct diffusion MRI analysis and functional connectomics in aging populations</li><li>Perform statistical and machine learning analyses on neuroimaging biomarkers</li></ul></div>
+<div class="job"><div class="row"><span class="job-role">Research Scientist &middot; Neuromodulation &amp; Addiction Laboratory</span><span class="meta">Nov 2021 &ndash; Jul 2023</span></div><div class="job-org">Beijing Normal University &amp; Capital Medical University</div><ul><li>Designed and coordinated neuroimaging studies on brain stimulation and addiction</li><li>Supervised undergraduate and graduate research assistants</li><li>Disseminated findings at international conferences and peer-reviewed journals</li></ul></div>
+<div class="job"><div class="row"><span class="job-role">Graduate Research Assistant &middot; Cognitive Neuroscience Laboratory</span><span class="meta">Jun 2019 &ndash; Sep 2021</span></div><div class="job-org">Southwest University, Department of Psychology</div><ul><li>Conducted structural and functional MRI analysis on substance use populations</li><li>Analyzed resting-state fMRI connectivity patterns and cognitive outcomes</li></ul></div>
+<div class="job"><div class="row"><span class="job-role">Research Assistant &middot; Clinical Neurophysiology Unit</span><span class="meta">Mar 2020 &ndash; Aug 2020</span></div><div class="job-org">Fudan University, Shanghai Mental Health Center</div><ul><li>Assisted with clinical EEG data collection and preprocessing</li></ul></div>
+<div class="job"><div class="row"><span class="job-role">Undergraduate Research Assistant &middot; Behavioral Neuroscience Laboratory</span><span class="meta">Sep 2018 &ndash; Mar 2019</span></div><div class="job-org">Southwest University, Department of Psychology</div></div>
 </div>
 </section>
 
@@ -215,8 +212,8 @@ section+section{border-top:1px solid var(--rule-soft)}
 <div class="tblock"><div class="trole">Instructor of Record</div><div class="torg">University of Arizona</div>
 <div class="course"><span class="ccode">CGSC 321</span><span class="cname">Methods in Cognitive Science</span><span class="cterm">Summer 2025</span></div>
 <div class="course"><span class="ccode">PSY 413</span><span class="cname">Drugs, Brain, and Behavior</span><span class="cterm">Winter 2025</span></div>
-<div class="eval"><div class="eval-stat">Rated <b>4.95 / 5.00</b> overall on the student course survey for CGSC 321, with a perfect 5.00 on 29 of 32 items&mdash;including respect for students, quality of feedback, clarity of expectations, and course organization. <span class="eval-rate">(25% response rate)</span></div>
-<p class="eval-q">Students singled out the individualized, constructive feedback on their written work as a strength of the course.<cite>&mdash; Paraphrased from student course survey, Summer 2025</cite></p></div></div>
+<div class="eval">Rated <b>4.95 / 5.00</b> overall on student course evaluations for CGSC 321. Students highlighted the quality of feedback on written work.</div>
+</div>
 <div class="tblock"><div class="trole">Teaching Assistant</div><div class="torg">University of Arizona &middot; <span class="mono">Sep 2023 &ndash; Present</span></div>
 <div class="course"><span class="ccode">PSY 150</span><span class="cname">The Structure of Mind and Behavior</span><span class="cterm">Fall 2024</span></div>
 <div class="course"><span class="ccode">PSY 300</span><span class="cname">Mind and Brain</span><span class="cterm">Fall 2023 &ndash; Spring 2026</span></div>
@@ -230,7 +227,7 @@ section+section{border-top:1px solid var(--rule-soft)}
 <div class="sec-head"><span class="sec-num">VI</span><h2 class="sec-title">Service &amp; Peer Review</h2></div>
 <div class="sec-body">
 <div class="sub">Ad-hoc Journal Reviewer</div>
-<div class="rev"><em>Frontiers in Psychology</em> &middot; <em>Frontiers in Human Neuroscience</em> &middot; <em>Frontiers in Behavioral Neuroscience</em> &middot; <em>Frontiers in Systems Neuroscience</em> &middot; <em>Acta Psychologica</em> &middot; <em>Journal of Pain Research</em></div>
+<div class="rev"><em>Frontiers in Psychology</em> &middot; <em>Frontiers in Human Neuroscience</em> &middot; <em>Frontiers in Behavioral Neuroscience</em> &middot; <em>Frontiers in Systems Neuroscience</em></div>
 <div class="rev"><em>BMC Psychiatry</em> &middot; <em>Frontiers in Psychiatry</em> &middot; <em>Clinical Interventions in Aging</em> &middot; <em>Neuropsychiatric Disease and Treatment</em></div>
 <div class="rev"><em>Scientific Reports</em> &middot; <em>Nature and Science of Sleep</em> &middot; <em>Humanities &amp; Social Sciences Communications</em> &middot; <em>PLOS Climate</em></div>
 <div class="sub">Invited Talks &amp; Workshops</div>
@@ -274,7 +271,7 @@ section+section{border-top:1px solid var(--rule-soft)}
 <script>
 const links=[...document.querySelectorAll('#nav a')];
 const map=new Map(links.map(l=>[l.getAttribute('href').slice(1),l]));
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=map.get(e.target.id);if(a)a.classList.add('active');}});},{rootMargin:'-10% 0px -85% 0px'});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=map.get(e.target.id);if(a)a.classList.add('active');}});},{rootMargin:'-40% 0px -60% 0px'});
 document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
 </script>
 </body>
